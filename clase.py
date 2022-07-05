@@ -86,9 +86,9 @@ listaAgregada = [1, 3, 5]
 listaAgregada[3:] = lista[:]
 print(listaAgregada)
 
-#Las listas se pueden usar como pilas o como colas
+#LAS LISTAS SE PUEDEN USAR COMO PILAS O COMO COLAS
 
-#Pilas
+#PILAS
 #Funcionan bajo el principio de LIFO (Last In First Out): el último en entrar es el primero en salir
 lista = ["a", "b", "c", "d", "e", "f"]
 
@@ -130,5 +130,122 @@ print("-----")
 imprimirLista(list = [1, 5, 6, 7], reverse=True) #los Named parameter me permiten pasar los parámetros desordenados porque justamente los parámetros tienen nombre
 print("-----")
 imprimirLista(True, [1, 19, 20]) #si no pongo los nombres de los parámetros tengo que respetar el orden
+print("-----")
+
+#COLAS (tratamos a una lista como si fuese una cola)
+#También sigue el principio FIFO
+
+lista = ["a", "b", "c", "d", "e", "f"]
+
+lista.append("g") #append agrega un elemento al final de la lista
+lista.append("h")
+lista.append("i") 
+print(lista) 
+
+lista.pop(0) #remuevo el primer elemento de la lista
+print(lista) 
+print("-----")
 
 
+#LISTAS ANIDADAS
+
+tabla = [[1,2,3], [4,5,6], [7,8,9]]
+#i          0        1        2
+#j        0 1 2    0 1 2    0 1 2
+print(tabla)
+print(tabla[1]) # imprime [4,5,6]
+print(tabla[0][0]) # imprime 1
+print("-----")
+
+for i in range(len(tabla)): #i = 0
+    for j in range(len(tabla[i])): # j = 0, 1, 2
+        print(tabla[i][j], ' ') # tabla[0][0], tabla[0][1], tabla[0][2]
+    print() #para poner un enter
+print("-----")
+
+#TUPLAS
+#se simbolizan con paréntesis y son inmutables
+
+fecha1 = (1, "Enero", 2000)
+print(fecha1[0])
+print(fecha1[:2])
+
+#packing 
+nroCamiseta = 10
+equipo = "Argentina"
+jugador = "Messi"
+
+tupla = nroCamiseta, equipo, jugador #Packing
+
+print(tupla)
+
+#unpacking
+a, b, c = tupla
+print(a)
+print("-----")
+
+#CONJUNTOS O SETS
+#Un conjunto es una colección no ordenada y de elementos no repetidos
+#se simboliza con llaves
+
+canasta = {'manzana', 'naranja', 'pera', 'banana'}
+print(canasta) #vemos que 'manzana' aparece 1 sola vez
+
+
+if 'naranja' in canasta: 
+    print("hay naranjas")
+print("-----")
+
+#DICCIONARIOS
+#También se declara con llaves
+#Utiliza clave:valor
+#Se puede modificar valores
+
+coloresEspIng = {} #diccionario vacío
+coloresEspIng['rojo'] = 'red'
+coloresEspIng['azul'] = 'blue'
+coloresEspIng['verde'] = 'green'
+coloresEspIng['naranja'] = 'orange'
+
+print(coloresEspIng)
+print(coloresEspIng['rojo']) #puede indicar el nombre de la clave a la cual quiero acceder
+
+del(coloresEspIng['rojo']) #para eliminar un elemento
+
+print(coloresEspIng)
+
+punto ={'x':2, 'y':1, 'z':4} #También podemos inicializar el diccionario lleno
+print(punto)
+punto['x'] = 4
+print(punto)
+
+#Si accedo a una clave que no existe en el diccionario:
+#punto['w'] #me sale una excepción (Key error)
+
+print(punto.get('w')) #Como no existía w me devuelve "None"
+print(punto.get('w', 0)) #Si la 'w' no está puedo poner que me devuelva algún valor por defecto, en este caso 0
+print("-----")
+
+materias = {}
+materias['lunes'] = ['Gimnasia', 'Lengua', 'Matemática']
+materias['martes'] = ['Física', 'Lengua']
+materias['miercoles'] = ['Biologia', 'Matemática', 'Contabilidad']
+materias['jueves'] = ['Historia', 'Matemática']
+materias['viernes'] = ['Gimnasia', 'Geografía']
+
+for dia in materias:
+    print(dia, "tengo estas materias:", materias[dia])
+print("-----")
+
+#Otra forma de hacer lo mismo:
+for dia, listaMaterias in materias.items(): #devuelve una tupla que está formada por la clave junto con el valor: ('lunes', ['Gimnasia', 'Lengua', 'Matemática'])
+    print(dia, ":", listaMaterias)
+
+d = {'x':12, 'y':7}
+#para verificar si una clave está o no en un diccionario podemos usar:
+if 'x' in d:
+    print(d['x'])
+if 'z' in d:
+    print(d['z'])
+if 'y' in d:
+    print(d['y'])
